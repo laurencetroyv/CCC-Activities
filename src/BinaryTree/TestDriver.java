@@ -10,8 +10,8 @@ public class TestDriver {
 
         BSTNode left = new BSTNode(40);
         BSTNode right = new BSTNode(45);
-
         BSTNode node = new BSTNode(50, left, right);
+        
         BST bst = new BST();
 
         //root

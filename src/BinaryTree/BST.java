@@ -11,11 +11,11 @@ public class BST {
         // empty constructor
     }
 
-    public Comparable search(Comparable element) {
+    public Comparable<Object> search(Comparable<Object> element) {
         return search(root, element);
     }
 
-    protected Comparable search(BSTNode p, Comparable element) {
+    protected Comparable<Object> search(BSTNode p, Comparable<Object> element) {
         while (p != null)
             if (element.equals(p.element))
                 return p.element;
@@ -26,16 +26,16 @@ public class BST {
         return null;
     }
 
-    public void insert(Comparable element) {
-        BSTNode node = root, prev = null;
-        while (node != null) { // find a place for inserting new node;
+    public void insert(Comparable<Object> element) {
+        BSTNode node = root;
+        BSTNode prev = null;
+        while (node != null) {
             prev = node;
             if (node.element.compareTo(element) < 0)
                 node = node.right;
             else
                 node = node.left;
         }
-        // tree is empty;
         if (root == null)
             root = new BSTNode(element);
         else if (prev.element.compareTo(element) < 0)

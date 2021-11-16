@@ -4,7 +4,7 @@ package binaryTree;
  *          node of a generic binary search tree                */
 
 public class BSTNode {
-    protected Comparable element;
+    protected Comparable<Object> element;
     protected BSTNode left;
     protected BSTNode right;
 
