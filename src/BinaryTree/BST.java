@@ -1,48 +1,51 @@
-package BinaryTree;
+package binaryTree;
 
-/************************* BST.java **************************
- *                 generic binary search tree               */
+/*************************
+ * BST.java ************************** generic binary search tree
+ */
 
 public class BST {
     protected BSTNode root = null;
 
     public BST() {
+        // empty constructor
     }
 
-    public Comparable search(Comparable el) {
-        return search(root, el);
+    public Comparable search(Comparable element) {
+        return search(root, element);
     }
 
-    protected Comparable search(BSTNode p, Comparable el) {
+    protected Comparable search(BSTNode p, Comparable element) {
         while (p != null)
-            if (el.equals(p.el))
-                return p.el;
-            else if (el.compareTo(p.el) < 0)
+            if (element.equals(p.element))
+                return p.element;
+            else if (element.compareTo(p.element) < 0)
                 p = p.left;
             else
                 p = p.right;
         return null;
     }
 
-    public void insert(Comparable el) {
-        BSTNode p = root, prev = null;
-        while (p != null) { // find a place for inserting new node;
-            prev = p;
-            if (p.el.compareTo(el) < 0)
-                p = p.right;
+    public void insert(Comparable element) {
+        BSTNode node = root, prev = null;
+        while (node != null) { // find a place for inserting new node;
+            prev = node;
+            if (node.element.compareTo(element) < 0)
+                node = node.right;
             else
-                p = p.left;
+                node = node.left;
         }
-        if (root == null) // tree is empty;
-            root = new BSTNode(el);
-        else if (prev.el.compareTo(el) < 0)
-            prev.right = new BSTNode(el);
+        // tree is empty;
+        if (root == null)
+            root = new BSTNode(element);
+        else if (prev.element.compareTo(element) < 0)
+            prev.right = new BSTNode(element);
         else
-            prev.left = new BSTNode(el);
+            prev.left = new BSTNode(element);
     }
 
     protected void visit(BSTNode p) {
-        System.out.print(p.el + " ");
+        System.out.print(p.element + " ");
     }
 
     public void inorder() {
@@ -55,5 +58,64 @@ public class BST {
             visit(p);
             inorder(p.right);
         }
+    }
+
+    public int countNodes(BSTNode node) {
+
+        if (node == null)
+            return 0;
+
+        int count = 0;
+        if (node.left != null || node.right != null)
+            count++;
+
+        count += (countNodes(node.left) + countNodes(node.right));
+        return count;
+    }
+
+    public int countLeaves(BSTNode node) {
+        if (node == null)
+            return 0;
+            
+        if (node.left == null && node.right == null)
+            return 1;
+        else
+            return countLeaves(node.left) + countLeaves(node.right);
+    }
+
+    public int rightChildren(BSTNode node) {
+        if (node == null)
+            return 0;
+
+        int count = 0;
+        if (node.left != null || node.right != null)
+            count++;
+
+        count += (countNodes(node.right) + countNodes(node.right));
+        return count;
+    }
+
+    public int height(BSTNode node) {
+        if (node == null)
+            return 0;
+        else {
+            int leftHeight = height(node.left);
+            int rightHeight = height(node.right);
+
+            if (leftHeight > rightHeight)
+                return (leftHeight + 1);
+            else
+                return (rightHeight + 1);
+        }
+    }
+
+    public BSTNode deleteAll(BSTNode node) {
+        if (node == null || node.left == null && node.right == null)
+            return null;
+
+        node.left = deleteAll(node.left);
+        node.right = deleteAll(node.right);
+
+        return node;
     }
 }
