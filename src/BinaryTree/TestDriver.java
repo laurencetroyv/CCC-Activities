@@ -1,22 +1,28 @@
 package binaryTree;
 
 public class TestDriver {
+
+    /************************* TestDriver.java **************************
+    *          a test drive class for binary search tree                *
+    *           Created by: Laurence Troy Sambaan Valdez                *
+    ************************* TestDriver.java **************************/
     public static void main(String[] args) {
-        BSTNode node = new BSTNode(50);
+
+        BSTNode left = new BSTNode(40);
+        BSTNode right = new BSTNode(45);
+
+        BSTNode node = new BSTNode(50, left, right);
         BST bst = new BST();
 
         //root
         bst.root = node;
-        
-        bst.root.left = new BSTNode(45);
-        bst.root.right = new BSTNode(40);
 
-        bst.root.left.right = new BSTNode(25);
-        bst.root.left.left = new BSTNode(10);
-        bst.root.left.left.right = new BSTNode(15);
+        left.right = new BSTNode(25);
+        left.left = new BSTNode(10);
+        left.left.left = new BSTNode(15);
         
-        bst.root.right.left = new BSTNode(5);
-        bst.root.right.right = new BSTNode(3);
+        right.left = new BSTNode(5);
+        right.right = new BSTNode(3);
 
         System.out.print("All Data in the Nodes: ");
         bst.inorder();
