@@ -16,13 +16,13 @@ public class BST {
     }
 
     protected Comparable<Object> search(BSTNode BSTNODEElement, Comparable<Object> element) {
-        while (p != null)
-            if (element.equals(p.element))
-                return p.element;
-            else if (element.compareTo(p.element) < 0)
-                p = p.left;
+        while (BSTNODEElement != null)
+            if (element.equals(BSTNODEElement.element))
+                return BSTNODEElement.element;
+            else if (element.compareTo(BSTNODEElement.element) < 0)
+            BSTNODEElement = BSTNODEElement.left;
             else
-                p = p.right;
+            BSTNODEElement = BSTNODEElement.right;
         return null;
     }
 
