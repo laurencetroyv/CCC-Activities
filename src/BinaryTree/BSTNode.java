@@ -1,8 +1,8 @@
 package binaryTree;
 
 /************************* BSTNode.java **************************
- *          node of a generic binary search tree                */
-
+ *          node of a generic binary search tree                 *
+ *********************** BSTNode.java ***************************/
 public class BSTNode {
     protected Comparable<Object> element;
     protected BSTNode left;

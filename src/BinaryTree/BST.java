@@ -1,8 +1,8 @@
 package binaryTree;
 
-/*************************
- * BST.java ************************** generic binary search tree
- */
+/************************** BST.java **************************
+ *              generic binary search tree                    *
+ ************************* BST.java **************************/
 
 public class BST {
     protected BSTNode root = null;
@@ -15,7 +15,7 @@ public class BST {
         return search(root, element);
     }
 
-    protected Comparable<Object> search(BSTNode p, Comparable<Object> element) {
+    protected Comparable<Object> search(BSTNode BSTNODEElement, Comparable<Object> element) {
         while (p != null)
             if (element.equals(p.element))
                 return p.element;
